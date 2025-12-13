@@ -5,7 +5,7 @@ import time
 
 # --- Configuration ---
 NUM_RECORDS = 1000001  # Set to 1 million
-CSV_FILE = 'large_customer_orders.csv'
+CSV_FILE = '../Lecture_5/large_customer_orders.csv'
 fake = Faker('en_US')
 # Set the batch size for writing (improves efficiency)
 BATCH_SIZE = 50000

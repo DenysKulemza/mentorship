@@ -10,7 +10,7 @@ def csv_generator(file_path):
 
 
 # Using the generator:
-for row_data in csv_generator('large_customer_orders.csv'):
+for row_data in csv_generator('../Lecture_5/large_customer_orders.csv'):
     # Process the row data here
     print(row_data)
 
@@ -43,7 +43,7 @@ def read_file_manually(file_path):
 
 # --- Example ---
 print("\n--- Traditional Approach Example ---")
-read_file_manually('large_customer_orders.csv')
+read_file_manually('../Lecture_5/large_customer_orders.csv')
 
 def csv_list_loader(file_path):
     """Loads ALL rows into a list."""
@@ -56,7 +56,7 @@ def csv_list_loader(file_path):
     return data
 
 # Using the list:
-all_data = csv_list_loader('large_customer_orders.csv') # HUGE memory spike here
+all_data = csv_list_loader('../Lecture_5/large_customer_orders.csv') # HUGE memory spike here
 for row_data in all_data:
     # Process the row data here
     print(row_data)

@@ -9,11 +9,11 @@ OUTPUT_CSV = 'transformed_orders_summary.csv'
 
 # --- Transformation Functions ---
 
-def load_data(file_path):
+def extract_data(file_path):
     """Loads the CSV data into a Pandas DataFrame."""
     print(f"🔄 Loading data from {file_path}...")
     # Use appropriate dtypes to save memory, especially for large datasets
-    dtype_config = {
+    data_type_config = {
         'Order_ID': str,
         'Customer_ID': str,
         'Order_Date': str,  # Read as string, convert later
@@ -26,7 +26,7 @@ def load_data(file_path):
     }
 
     # Read the data, optimizing for memory
-    df = pd.read_csv(file_path, dtype=dtype_config)
+    df = pd.read_csv(file_path, dtype=data_type_config)
 
     # Convert 'Order_Date' to datetime objects
     df['Order_Date'] = pd.to_datetime(df['Order_Date'])
@@ -80,7 +80,7 @@ def transform_data(df):
     return summary_df
 
 
-def save_data(df, file_path):
+def load_data(df, file_path):
     """Saves the transformed DataFrame to a new CSV file."""
     print(f"💾 Saving transformed data to {file_path}...")
     # Using 'gzip' compression is highly recommended for large CSV files
@@ -94,14 +94,14 @@ if __name__ == "__main__":
     start_time = time.time()
 
     try:
-        # Step 1: Load Data
-        df_raw = load_data(INPUT_CSV)
+        # Step 1: Extract Data
+        df_raw = extract_data(INPUT_CSV)
 
         # Step 2: Transform Data
         df_transformed = transform_data(df_raw)
 
-        # Step 3: Save Data
-        save_data(df_transformed, OUTPUT_CSV)
+        # Step 3: Load Data
+        load_data(df_transformed, OUTPUT_CSV)
 
         end_time = time.time()
         total_time = end_time - start_time
