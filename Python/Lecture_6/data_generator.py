@@ -28,7 +28,9 @@ def generate_transactions(num_records):
         'region': np.random.choice(REGIONS, size=num_records),
         'transaction_date': random_dates,
         'unit_price': np.round(np.random.uniform(10.0, 500.0, num_records), 2),
-        'units_sold': np.random.randint(1, 101, num_records)
+        'units_sold': np.random.randint(1, 101, num_records),
+        'card_number': np.random.randint(1000000000000000, 9000000000000000, num_records),
+        'cvv': np.random.randint(100, 999, num_records)
     }
 
     df = pd.DataFrame(data)

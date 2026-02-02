@@ -16,13 +16,16 @@ class Animal:
         self.age += 1
         self.teeth -= 1
 
+    def _private_method(self):
+        print('PRIVATE METHOD')
+        self.age *= 2
+
     def print_age(self):
         print('Name: ', self.name, ' Age: ', self.age, ' Teeth: ', self.teeth)
 
     @classmethod
     def start_from_scratch(cls):
         cls.teeth = 32
-
 
 # --- inheritance
 class Fish(Animal):
