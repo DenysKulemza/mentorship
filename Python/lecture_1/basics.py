@@ -1,102 +1,107 @@
-# --- loops
-arr = [1, 2, 434, 5]
+# - [ ]  **Variables & Data Types**
+#     - Understanding `int`, `float`, `str`, `bool`.
+#     - [Real Python: Variables in Python](https://realpython.com/python-variables/)
+# - [ ]  **Control Flow (If/Else)**
+#     - Conditional logic and indentation.
+#     - [W3Schools: Python Conditions](https://www.w3schools.com/python/python_conditions.asp)
+# - [ ]  **Loops**
+#     - `for` loops, `while` loops, and `break`/`continue` statements.
+#     - [Programiz: Python Loops](https://www.programiz.com/python-programming/for-loop)
+# - [ ]  **Data Structures**
+#     - Lists, Tuples, Sets, and Dictionaries.
+#     - [Python Docs: Data Structures](https://docs.python.org/3/tutorial/datastructures.html)
 
-# for i in arr:
-#     print(i)
+
+# Variables & Data Types
 
 
-# --- magic methods
+# ============LIST==============
+# List - mutuable
 
-a = 1 + 2
-# a = 1.__add(2)__
+l = [1, 3.5, "Hello", True]
 
-# --- methods
-def multiply_array():
-    new_arr = []
+l.append(10)
 
-    for i in arr:
-        new_arr.append(i * 2)
+# print(l)
 
-    return new_arr
+l.remove(3.5)
+# print(l)
 
-def multipy_array_args(array, multiplier):
-    new_arr = []
+l[0] = 100
 
-    for i in array:
-        new_arr.append(i * multiplier)
+# print(l)
 
-    return new_arr
+# ==========================
 
-def multipy_array_optional(array, multiplier=2):
-    new_arr = []
+# ============TUPLE==============
 
-    for i in array:
-        new_arr.append(i * multiplier)
+# Tuple - immutable
 
-    return new_arr
+t = (1, 3.5, "Hello", True)
 
-# --- decorators
-def array_length(func):
-    def wrapper(*args, **kwargs):
-        print('Array length: ', len(func(args, kwargs)))
-        return func(args, kwargs)
-    return wrapper
+# t[0] = 100  # This will raise an error because tuples are immutable
 
-@array_length
-def array_test(array, multiplier=2):
-    new_arr = []
+# print(t)
 
-    for i in array:
-        new_arr.append(i * multiplier)
+# ==========================
 
-    return new_arr
+# ============SET==============
 
-def args_tst(*args):
-    print(args)
+# Set - mutable, unordered, no duplicates
 
-def kwargs_tst(**kwargs):
-    print(kwargs)
+s = {1, 3.5, "Hello", True}
 
-def kwargs_args_tst(*args, **kwargs):
-    print(args)
-    print(kwargs)
+s.add(10)
 
-if __name__ == '__main__':
-    # result_function = multiply_array()
+# print(s)
 
-    # print(result_function)
+s.remove(3.5)
+# print(s)
 
-    kwargs_args_tst(123414, 450, day=10, number=124312, str='asfsdfdsf')
+s.add(10)
 
-    # new_arra = array_test(array=arr, multiplier=10)
-    #
-    # print(new_arra)
+# print(s)
 
-    # for index in range(0, len(arr) + 1):
-    #     print('Index: ', index, ' array element: ', arr[index])
-    #
-    # index = 20
-    #
-    # while index > 0:
-    #     print('Inside while loop: ', index)
-    #
-    #     index -= 1
-    # index = index - 1
-    #
-    # api_call = 1
-    #
-    #
-    # while True:
-    #
-    #     if api_call == 1:
-    #         print('API response: ', api_call)
-    #         # write to database
-    #         api_call = 0
-    #
-    #     else:
-    #         break
-    #
-    # print('Exit while  loop')
+# ==========================
 
-# range(arg1, arg2, arg3) -> arg1 = starting number,  arg2 = last number, arg3 = step
+# ============DICTIONARY==============
 
+# Dictionary - mutable, key-value pairs
+
+d = {
+    "name": "Alice",
+    "age": 30,
+    "is_student": False,
+    (1, 2): "This is a tuple key"
+}
+
+d["name"] = "Bob"  # Update value for existing key
+
+# print(d)
+
+# ==========================
+
+
+# for item in l:
+#     print(item)
+
+# print(item)
+
+# for key, value in d.items():
+#     print(f"Key: {key}, Value: {value}")
+
+l = [1, 3.5, "Hello", True]
+index = 0
+
+while True:
+
+    if index >= len(l):
+        print("End of list reached.")
+        break
+    elif index == 2:
+        print("Skipping index 2")
+        index += 1
+        break
+
+    print(l[index])
+    index += 1
