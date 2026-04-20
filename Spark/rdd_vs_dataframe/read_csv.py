@@ -3,7 +3,7 @@ from pyspark.sql.types import StructType, StructField, IntegerType, StringType, 
 
 # Initialize Spark Session
 spark = SparkSession.builder.appName("CSVReaderExample").getOrCreate()
-# sc = spark.sparkContext
+sc = spark.sparkContext
 
 # CSV file path
 csv_file = "/Users/dkulemza/PycharmProjects/mentorship/Spark/data/employees.csv"
@@ -31,13 +31,15 @@ schema = StructType([
 ])
 
 
-# # ===== Reading CSV using DataFrame =====
+# # # ===== Reading CSV using DataFrame =====
 df = spark.read.option("header", "true").option("inferSchema", "true").schema(schema).csv(csv_file)
 
-print("DataFrame approach:")
-df.filter(df.employee_id == 51).show(5)
 
-# df.printSchema()
+
+print("DataFrame approach:")
+df.filter(df.employee_id == 572).show(5)
+
+df.printSchema()
 
 # Stop Spark Session
 spark.stop()

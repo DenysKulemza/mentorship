@@ -6,7 +6,8 @@ import pyarrow.parquet as pq
 
 fake = Faker()
 
-def generate_data(num_rows=1000000):
+
+def generate_data(num_rows=1500000):
     data = []
     for i in range(num_rows):
         data.append({

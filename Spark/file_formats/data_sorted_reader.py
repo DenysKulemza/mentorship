@@ -28,3 +28,6 @@ print(f"Sorted read time: {sorted_time:.2f} seconds, Count: {sorted_count}")
 
 # Stop Spark session
 spark.stop()
+
+# Unsorted read time: 2.53 seconds, Count: 1381160                                
+# Sorted read time: 0.18 seconds, Count: 1381160

@@ -1,18 +1,13 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 
-# RDD vs DataFrame Examples in PySpark
-
-# RDD (Resilient Distributed Dataset)
-# DataFrame 
-# DataSet (Java, Scala)
-
 # Initialize Spark Session
 spark = SparkSession.builder.appName("RDD_vs_DataFrame").getOrCreate()
 sc = spark.sparkContext
 
 # SparkContext, SQLContext, ....
-# SparkSession
+# SparkSession ()
+
 
 # ============== RDD EXAMPLES ==============
 # RDD (Resilient Distributed Dataset):
@@ -21,13 +16,13 @@ sc = spark.sparkContext
 # - Slower for SQL operations
 # - More flexible for unstructured data
 
-# Create an RDD from a collection
+# # Create an RDD from a collection
 # rdd_data = sc.parallelize([1, 2, 3, 4, 5])
 # result_rdd = rdd_data.map(lambda x: x * 2).collect()
 # print("RDD result:", result_rdd)
 
-# # RDD with tuples (key-value pairs)
-# rdd_kv = sc.parallelize([("Alice", 25), ("Bob", 30), ("Charlie", 35)])
+# # # RDD with tuples (key-value pairs)
+# rdd_kv = sc.parallelize([(25, "Alice"), (30, "Bob"), (35, "Charlie")])
 # rdd_filtered = rdd_kv.filter(lambda x: x[1] > 26).collect()
 # print("RDD filtered:", rdd_filtered)
 
@@ -40,16 +35,16 @@ sc = spark.sparkContext
 # - Closer to SQL/Pandas
 
 # Create a DataFrame from data with schema
-# data = [("Alice", 25), ("Bob", 30), ("Charlie", 35)]
-# schema = StructType([
-#     StructField("name", StringType(), True),
-#     StructField("age", IntegerType(), True)
-# ])
-# df = spark.createDataFrame(data, schema=schema)
+data = [("Alice", 25), ("Bob", 30), ("Charlie", 35)]
+schema = StructType([
+    StructField("name", StringType(), True),
+    StructField("age", IntegerType(), True)
+])
+df = spark.createDataFrame(data, schema=schema)
 
 # # DataFrame operations using SQL-like syntax
-# df_filtered = df.filter(df.age > 26)
-# # df_filtered.show()
+df_filtered = df.filter(df.age > 26)
+df_filtered.show()
 
 # # SQL query on DataFrame
 # df.createOrReplaceTempView("people")

@@ -40,3 +40,42 @@ print(f"Parquet: {parquet_time:.2f}s")
 
 # Stop Spark session
 spark.stop()
+
+
+# 100k records
+
+# Full dataset read
+# Performance Comparison:
+# CSV: 2.36s
+# JSON: 0.48s
+# Parquet: 0.35s
+
+
+# Filter + Select
+# Performance Comparison:
+# CSV: 2.36s
+# JSON: 0.53s
+# Parquet: 0.66s
+
+# 3.4M Apr  6 18:34 data.csv
+# 8.3M Apr  6 18:34 data.json
+# 1.4M Apr  6 18:34 data.parquet
+
+
+# 1.5mil
+
+# 54M Apr  6 18:40 data.csv
+# 126M Apr  6 18:40 data.json
+# 20M Apr  6 18:40 data.parquet
+
+# Full dataset read
+# Performance Comparison:
+# CSV: 2.67s
+# JSON: 1.79s
+# Parquet: 0.33s
+
+# Filter + Select
+# Performance Comparison:
+# CSV: 3.65s
+# JSON: 2.22s
+# Parquet: 0.84s
