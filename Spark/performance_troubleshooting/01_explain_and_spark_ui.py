@@ -21,7 +21,6 @@ spark = (
     SparkSession.builder
     .appName("01_ExplainAndSparkUI")
     .master("local[*]")
-    .config("spark.sql.shuffle.partitions", "8")
     .getOrCreate()
 )
 spark.sparkContext.setLogLevel("WARN")
@@ -43,6 +42,8 @@ query = (
     .agg(F.sum("amount").alias("total_spent"))
     .orderBy(F.desc("total_spent"))
 )
+
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "-1")
 
 # --- (a) Simple plan (default) ---
 print("\n[explain() — simple]")
@@ -73,8 +74,13 @@ print("=" * 70)
 
 join_query = orders.join(customers, on="customer_id", how="inner")
 
+print(f"  Default join row count : {join_query.count():,}")
+
+
 print("\n[Default join — likely SortMergeJoin (two Exchange nodes)]")
 join_query.explain("formatted")
+
+input("\nPress ENTER to close Spark session and exit...")
 
 # Force a broadcast join on the small dimension table
 from pyspark.sql.functions import broadcast

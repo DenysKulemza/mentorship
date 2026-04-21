@@ -104,9 +104,9 @@ if __name__ == "__main__":
     os.makedirs("data", exist_ok=True)
 
     print("Generating datasets (this may take a minute)...")
-    generate_customers(num_rows=10_000_000)
+    generate_customers(num_rows=40_000_000)
     generate_orders(num_rows=30_000_000)
-    generate_events(num_rows=20_000_000)
+    generate_events(num_rows=40_000_000)
     print("\nAll datasets ready. Open http://localhost:4040 to inspect the Spark UI.")
 
     spark.stop()
